@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>result</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+  	<ion-list-header>
+  		Good results: {{goodPercentage}}%
+  	</ion-list-header>
+  	<ion-item *ngFor="let result of resultTab" >
+	    <ion-label>
+	      <font size="5">{{result.hiragana}}</font>
+	      &nbsp;{{result.romanji}}
+	    </ion-label>
+	    <ion-icon [name]="result.succes ? 'checkmark' : 'close'" [color]="result.succes ? 'secondary' : 'danger'" item-right></ion-icon>
+    </ion-item>
+  </ion-list>
+	
+
+</ion-content>

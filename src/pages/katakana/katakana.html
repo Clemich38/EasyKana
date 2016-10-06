@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Katakana</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-row *ngFor="let n of cols">
+    <ion-col class="col" *ngFor="let m of rows" style="text-align:center" >
+    	<div *ngIf="(m+n) <  katakanaTab.length" (tap)="onToggleState(m+n)">
+        <ion-label [color]="katakanaTab[m+n].katakanaIsLearned ? 'secondary' : 'dark'">
+          <font size="6">{{katakanaTab[m+n].katakana}}</font>
+        </ion-label>
+        <ion-label [color]="katakanaTab[m+n].katakanaIsLearned ? 'secondary' : 'dark'">
+          {{katakanaTab[m+n].romanji}}
+        </ion-label>
+	    </div>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
+
+<!-- 
+        <button ion-button [color] = "katakanaTab[m+n].katakanaIsLearned ? 'secondary' : 'dark'" clear (click)="onToggleState(m+n)">
+          <font size="6">{{katakanaTab[m+n].katakana}}</font>
+        </button> -->

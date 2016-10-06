@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title center>Quiz</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col width-20></ion-col>
+			<ion-col width-60>
+				<div style="text-align: center">
+					<button ion-button center block color="dark" class="space" (click)="openQuestion()">Quiz Start</button>
+				</div>
+				<div style="text-align: center">
+					<button ion-button center block color="dark" class="space">Quiz Settings</button>
+				</div>
+				<div style="text-align: center">
+					<button ion-button center block color="dark" class="space" menuToggle>Learning</button>
+				</div>
+			</ion-col>
+			<ion-col width-20></ion-col>
+		</ion-row>
+	</ion-grid>
+
+</ion-content>
