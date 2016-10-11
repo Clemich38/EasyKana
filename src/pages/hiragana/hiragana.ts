@@ -29,7 +29,8 @@ export class HiraganaPage {
 	range(min, max, step) {
     step = step || 1;
     var tab = [];
-    for (var i = min; i <= max; i += step) {
+    for (var i = min; i <= max; i += step)
+    {
         tab.push(i);
     }
     return tab;
