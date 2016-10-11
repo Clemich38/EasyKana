@@ -40,6 +40,9 @@ export class HiraganaPage {
       this.hiraganaTab[index].hiraganaIsLearned = false;
     else
       this.hiraganaTab[index].hiraganaIsLearned = true;
+
+    // Save it
+    this.kanas.saveData();
   }
 
   ionViewDidLoad() {
