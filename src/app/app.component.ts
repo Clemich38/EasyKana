@@ -5,8 +5,6 @@ import { Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
 import { QuizPage } from '../pages/quiz/quiz';
-import { QuestionPage } from '../pages/question/question';
-import { ResultPage } from '../pages/result/result';
 import { HiraganaPage } from '../pages/hiragana/hiragana';
 import { KatakanaPage } from '../pages/katakana/katakana';
 
