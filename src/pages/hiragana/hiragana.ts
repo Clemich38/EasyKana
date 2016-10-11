@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, PopoverController } from 'ionic-angular';
 import { Kanas } from '../../providers/kanas';
+import { PopoverMenuPage } from '../popover-menu/popover-menu';
 
 import { Storage } from '@ionic/storage';
 
@@ -16,6 +17,7 @@ export class HiraganaPage {
   rows: any;
 
   constructor(public navCtrl: NavController,
+              public popoverCtrl: PopoverController,
               public storage: Storage,
               public kanas: Kanas)
   {
@@ -44,6 +46,14 @@ export class HiraganaPage {
 
     // Save it
     this.kanas.saveData();
+  }
+
+  openOptions(event)
+  {
+    let popover = this.popoverCtrl.create(PopoverMenuPage);
+    popover.present({
+      ev: event
+    });
   }
 
   ionViewDidLoad()

@@ -7,6 +7,7 @@ import { QuestionPage } from '../pages/question/question';
 import { ResultPage } from '../pages/result/result';
 import { HiraganaPage } from '../pages/hiragana/hiragana';
 import { KatakanaPage } from '../pages/katakana/katakana';
+import { PopoverMenuPage } from '../pages/popover-menu/popover-menu';
 import { Kanas } from '../providers/kanas';
 
 import { Storage } from '@ionic/storage';
@@ -18,7 +19,8 @@ import { Storage } from '@ionic/storage';
     QuestionPage,
     ResultPage,
     HiraganaPage,
-    KatakanaPage
+    KatakanaPage,
+    PopoverMenuPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -31,7 +33,8 @@ import { Storage } from '@ionic/storage';
     QuestionPage,
     ResultPage,
     HiraganaPage,
-    KatakanaPage
+    KatakanaPage,
+    PopoverMenuPage
   ],
   providers: [Kanas, Storage]
 })
