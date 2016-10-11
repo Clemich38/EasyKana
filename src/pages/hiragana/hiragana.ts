@@ -46,7 +46,8 @@ export class HiraganaPage {
     this.kanas.saveData();
   }
 
-  ionViewDidLoad() {
+  ionViewDidLoad()
+  {
     console.log('Hello Hiragana Page');
   }
 }
