@@ -9,33 +9,33 @@ import { ResultPage } from '../result/result';
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
-*/
-@Component({
-  selector: 'page-question',
-  templateUrl: 'question.html'
-})
-export class QuestionPage {
+  */
+  @Component({
+    selector: 'page-question',
+    templateUrl: 'question.html'
+  })
+  export class QuestionPage {
 
-  kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
-  quizTab: Array<{hiragana: string, romanji: string, succes: boolean}>;
-  responseTab: Array<{romanji: string, isGood: boolean, hasBeenClicked: boolean}>;
-  iterator: number;
-  size: number;
-  nextStr: string;
-  nextDisable : boolean;
-  quizIsOver : boolean;
+    kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
+    quizTab: Array<{hiragana: string, romanji: string, succes: boolean}>;
+    responseTab: Array<{romanji: string, isGood: boolean, hasBeenClicked: boolean}>;
+    iterator: number;
+    size: number;
+    nextStr: string;
+    nextDisable : boolean;
+    quizIsOver : boolean;
 
-  constructor(public navCtrl: NavController,
-              public kanas: Kanas)
-  {
+    constructor(public navCtrl: NavController,
+      public kanas: Kanas)
+    {
   	// Full kana array
   	this.iterator = 0;
   	this.size = 4;
   	this.nextStr = "Next";
-		this.quizIsOver = false;
-  	this.nextDisable = true;
+    this.quizIsOver = false;
+    this.nextDisable = true;
 
-  	this.kanaTab = kanas.getTab();
+    this.kanaTab = kanas.getTab();
 
   	// Build quiz array
   	this.buildQuizTab();
@@ -45,11 +45,11 @@ export class QuestionPage {
 	  	// build the first responses array
 	  	this.buildResponseTab(this.size, this.iterator);
 	  }
-		else
-  	{
-			this.quizIsOver = true;
-  		this.nextStr = "No kana...";
-  	}
+    else
+    {
+      this.quizIsOver = true;
+      this.nextStr = "No kana...";
+    }
 
   }
 
@@ -61,12 +61,12 @@ export class QuestionPage {
     {
     	if(this.kanaTab[i].hiraganaIsLearned)
     	{
-	      this.quizTab.push({
-	        hiragana: this.kanaTab[i].hiragana,
-	        romanji:  this.kanaTab[i].romanji,
-	        succes: false
-	      });
-	    }
+        this.quizTab.push({
+          hiragana: this.kanaTab[i].hiragana,
+          romanji:  this.kanaTab[i].romanji,
+          succes: false
+        });
+      }
     }
 
     // Scramble the array
@@ -88,9 +88,9 @@ export class QuestionPage {
     	str = this.kanaTab[Math.floor(Math.random() * (this.kanaTab.length - 1))].romanji;
     	if(str.localeCompare(""))
     	{
-	    	this.responseTab.push({romanji: str, isGood: false, hasBeenClicked: false});
-	    	index ++;
-	    }
+        this.responseTab.push({romanji: str, isGood: false, hasBeenClicked: false});
+        index ++;
+      }
     }
 
     // Scramble the array
@@ -100,7 +100,7 @@ export class QuestionPage {
 
   shuffle(array)
   {
-	  var currentIndex = array.length, temporaryValue, randomIndex;
+    var currentIndex = array.length, temporaryValue, randomIndex;
 
 	  // While there remain elements to shuffle...
 	  while (0 !== currentIndex)
@@ -125,33 +125,33 @@ export class QuestionPage {
 		if(this.iterator >= (this.quizTab.length - 1))
 		{
 			this.quizIsOver = true;
-  		this.nextStr = "Show results";
-		}
+      this.nextStr = "Show results";
+    }
 
 		// Set Response button state
 		response.hasBeenClicked = true;
 
-		// Check the result
-		if(response.isGood && this.nextDisable == true)
-		{
-			this.quizTab[this.iterator].succes = true;
-		}
+    // Check the result
+    if(response.isGood && this.nextDisable == true)
+    {
+      this.quizTab[this.iterator].succes = true;
+    }
 
-		this.nextDisable = false;
+    this.nextDisable = false;
   }
 
-	nextQuestion()
-	{
-		if(!this.quizIsOver)
-		{
-			this.nextDisable = true;
-			this.iterator++;
-			this.buildResponseTab(this.size, this.iterator);
-		}
-		else
-		{
+  nextQuestion()
+  {
+    if(!this.quizIsOver)
+    {
+      this.nextDisable = true;
+      this.iterator++;
+      this.buildResponseTab(this.size, this.iterator);
+    }
+    else
+    {
     	this.navCtrl.push(ResultPage, {resTab: this.quizTab});
-		}
+    }
   }
 
   ionViewDidLoad() {
