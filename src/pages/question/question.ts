@@ -59,7 +59,7 @@ import { ResultPage } from '../result/result';
     this.quizTab = [];
     for (let i in this.kanaTab)
     {
-    	if(this.kanaTab[i].hiraganaIsLearned)
+      if(this.kanaTab[i].hiraganaIsLearned && this.kanaTab[i].romanji.localeCompare("")) 
     	{
         this.quizTab.push({
           hiragana: this.kanaTab[i].hiragana,
@@ -79,17 +79,21 @@ import { ResultPage } from '../result/result';
     this.responseTab = [];
     var index = 1;
     var str = "";
+    var strTab = [];
 
     // First item in the array is the correct answer
     this.responseTab.push({romanji: this.quizTab[golbalIndex].romanji, isGood:  true, hasBeenClicked: false});
+    strTab[0] = this.quizTab[golbalIndex].romanji;
 
     while (index < size) 
     {
     	str = this.kanaTab[Math.floor(Math.random() * (this.kanaTab.length - 1))].romanji;
-    	if(str.localeCompare(""))
+
+      // Check if the answer is not empty or already present in the response array
+    	if(str.localeCompare("") && !(this.checkIfAlreadyPicked(str, strTab)))
     	{
         this.responseTab.push({romanji: str, isGood: false, hasBeenClicked: false});
-        index ++;
+        strTab[index++] = str; 
       }
     }
 
@@ -152,6 +156,16 @@ import { ResultPage } from '../result/result';
     {
     	this.navCtrl.push(ResultPage, {resTab: this.quizTab});
     }
+  }
+
+  checkIfAlreadyPicked(str, strTab)
+  {
+    for(let i in strTab)
+    {
+      if(!str.localeCompare(strTab[i]))
+        return true;
+    }
+    return false;
   }
 
   ionViewDidLoad() {
