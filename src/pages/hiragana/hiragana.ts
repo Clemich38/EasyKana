@@ -56,6 +56,14 @@ export class HiraganaPage {
     });
   }
 
+  isOk(romanji)
+  {
+    if(romanji.localeCompare(""))
+      return true;
+    else
+      return false;
+  }
+
   ionViewDidLoad()
   {
     console.log('Hello Hiragana Page');
