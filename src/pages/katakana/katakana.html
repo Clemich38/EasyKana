@@ -12,18 +12,20 @@
 
 <ion-content>
 
-  <ion-row *ngFor="let n of cols">
-    <ion-col class="col" *ngFor="let m of rows" style="text-align:center" >
-    	<div *ngIf="(m+n) <  katakanaTab.length" (tap)="onToggleState(m+n)">
-        <ion-label [color]="katakanaTab[m+n].katakanaIsLearned ? 'secondary' : 'dark'">
-          <font size="6">{{katakanaTab[m+n].katakana}}</font>
-        </ion-label>
-        <ion-label [color]="katakanaTab[m+n].katakanaIsLearned ? 'secondary' : 'dark'">
-          {{katakanaTab[m+n].romanji}}
-        </ion-label>
-	    </div>
-    </ion-col>
-  </ion-row>
+  <ion-grid>
+    <ion-row *ngFor="let n of cols">
+      <ion-col class="col" *ngFor="let m of rows" style="text-align:center" >
+        <div *ngIf="(m+n) <  katakanaTab.length" (tap)="onToggleState(m+n)">
+          <ion-label [color]="katakanaTab[m+n].katakanaIsLearned ? 'secondary' : 'dark'">
+            <font size="6">{{katakanaTab[m+n].katakana}}</font>
+          </ion-label>
+          <ion-label [color]="katakanaTab[m+n].katakanaIsLearned ? 'secondary' : 'dark'">
+            {{katakanaTab[m+n].romanji}}
+          </ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
 
