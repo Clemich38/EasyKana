@@ -8,6 +8,7 @@ import { ResultPage } from '../pages/result/result';
 import { HiraganaPage } from '../pages/hiragana/hiragana';
 import { KatakanaPage } from '../pages/katakana/katakana';
 import { PopoverMenuPage } from '../pages/popover-menu/popover-menu';
+import { InfoPage } from '../pages/info/info';
 import { Kanas } from '../providers/kanas';
 
 import { Storage } from '@ionic/storage';
@@ -20,7 +21,8 @@ import { Storage } from '@ionic/storage';
     ResultPage,
     HiraganaPage,
     KatakanaPage,
-    PopoverMenuPage
+    PopoverMenuPage,
+    InfoPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -34,7 +36,8 @@ import { Storage } from '@ionic/storage';
     ResultPage,
     HiraganaPage,
     KatakanaPage,
-    PopoverMenuPage
+    PopoverMenuPage,
+    InfoPage
   ],
   providers: [Kanas, Storage]
 })

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, PopoverController } from 'ionic-angular';
 import { Kanas } from '../../providers/kanas';
 import { PopoverMenuPage } from '../popover-menu/popover-menu';
+import { InfoPage } from '../info/info';
 
 import { Storage } from '@ionic/storage';
 
@@ -13,6 +14,7 @@ import { Storage } from '@ionic/storage';
 export class HiraganaPage {
     
   hiraganaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
+  hiraganaCat: Array<{isExpanded: boolean}>;
   cols: any;
   rows: any;
 
@@ -21,6 +23,12 @@ export class HiraganaPage {
               public storage: Storage,
               public kanas: Kanas)
   {
+    // Temporary init (to be retreived from Storage)
+    this.hiraganaCat = [];
+    this.hiraganaCat.push({isExpanded: true});
+    this.hiraganaCat.push({isExpanded: true});
+    this.hiraganaCat.push({isExpanded: true});
+
   	this.hiraganaTab = kanas.getTab();
 
   	this.cols = this.range(0, ((this.hiraganaTab).length - 1), 5);
@@ -48,12 +56,18 @@ export class HiraganaPage {
     this.kanas.saveData();
   }
 
-  openOptions(event)
+  onOpenOptions(event)
   {
     let popover = this.popoverCtrl.create(PopoverMenuPage);
     popover.present({
       ev: event
     });
+  }
+
+  onOpenInfos()
+  {
+    let popover = this.popoverCtrl.create(InfoPage);
+    popover.present({});
   }
 
   isOk(romanji)
@@ -62,6 +76,11 @@ export class HiraganaPage {
       return true;
     else
       return false;
+  }
+
+  onToggleHiraganaCats(category)
+  {
+    this.hiraganaCat[category].isExpanded = !(this.hiraganaCat[category].isExpanded); 
   }
 
   ionViewDidLoad()
