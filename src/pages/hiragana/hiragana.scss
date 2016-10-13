@@ -1,3 +1,23 @@
 page-hiragana {
 
+    .ion-row-nopadding{
+    padding: 0;
+    }
+    .ion-col-nopadding{
+    padding: 2px;
+    }
+
+    .card-md{
+        width: 100%;
+    };
+
+    .ion-card-active{
+        background-color: lightgreen;
+        margin: 0 !important;
+    };
+
+    .ion-card-inactive{
+        background-color: lightgrey;
+        margin: 0 !important;
+    };
 }

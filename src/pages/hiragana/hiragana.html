@@ -17,17 +17,21 @@
 
 <ion-content>
 
-  <ion-row *ngFor="let n of cols">
-    <ion-col class="col" *ngFor="let m of rows" style="text-align:center">
-      <div *ngIf="(m+n) <  hiraganaTab.length" (tap)="onToggleState(m+n)">
-        <ion-label [color]="hiraganaTab[m+n].hiraganaIsLearned ? 'secondary' : 'dark'">
-          <font size="6">{{hiraganaTab[m+n].hiragana}}</font>
-        </ion-label>
-        <ion-label [color]="hiraganaTab[m+n].hiraganaIsLearned ? 'secondary' : 'dark'">
-          {{hiraganaTab[m+n].romanji}}
-        </ion-label>
-      </div>
-    </ion-col>
-  </ion-row>
+  <ion-grid>
+    <ion-row class="ion-row-nopadding" *ngFor="let n of cols">
+      <ion-col class="ion-col-nopadding" *ngFor="let m of rows" style="text-align:center">
+        <div *ngIf="(m+n) <  hiraganaTab.length">
+          <ion-card *ngIf="isOk(hiraganaTab[m+n].romanji)" [ngClass]="hiraganaTab[m+n].hiraganaIsLearned ? 'ion-card-active' : 'ion-card-inactive'" (tap)="onToggleState(m+n)">
+            <ion-label>
+              <font size="6">{{hiraganaTab[m+n].hiragana}}</font>
+            </ion-label>
+            <ion-label>
+              {{hiraganaTab[m+n].romanji}}
+            </ion-label>
+          </ion-card>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
