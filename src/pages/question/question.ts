@@ -17,6 +17,8 @@ import { ResultPage } from '../result/result';
   export class QuestionPage {
 
     kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
+    fullTab: Array<{kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;}>
+  
     quizTab: Array<{hiragana: string, romanji: string, succes: boolean}>;
     responseTab: Array<{romanji: string, isGood: boolean, hasBeenClicked: boolean}>;
     iterator: number;
@@ -35,7 +37,8 @@ import { ResultPage } from '../result/result';
     this.quizIsOver = false;
     this.nextDisable = true;
 
-    this.kanaTab = kanas.getTab();
+    this.fullTab = kanas.getFullTab();
+    this.kanaTab = this.fullTab[0].kanaTab;
 
   	// Build quiz array
   	this.buildQuizTab();
