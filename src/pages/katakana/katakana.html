@@ -4,7 +4,15 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Katakana</ion-title>
+    <ion-title>Kanakana</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="onOpenInfos()">
+        <ion-icon name="information-circle"></ion-icon>
+      </button>
+      <button ion-button (click)="onOpenOptions($event)">
+        <ion-icon name="options"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -12,24 +20,44 @@
 
 <ion-content>
 
-  <ion-grid>
-    <ion-row *ngFor="let n of cols">
-      <ion-col class="col" *ngFor="let m of rows" style="text-align:center" >
-        <div *ngIf="(m+n) <  katakanaTab.length" (tap)="onToggleState(m+n)">
-          <ion-label [color]="katakanaTab[m+n].katakanaIsLearned ? 'secondary' : 'dark'">
-            <font size="6">{{katakanaTab[m+n].katakana}}</font>
-          </ion-label>
-          <ion-label [color]="katakanaTab[m+n].katakanaIsLearned ? 'secondary' : 'dark'">
-            {{katakanaTab[m+n].romanji}}
-          </ion-label>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-list>
+    
+    <ion-list-header (tap)="onToggleKanaCats(0)">
+      <ion-icon [name]="kanaCat[0].isExpanded ? 'arrow-dropdown' : 'arrow-dropright'" item-left></ion-icon>
+      Group 1: Basics
+    </ion-list-header>
+    <ion-grid *ngIf="kanaCat[0].isExpanded">
+      <ion-row class="ion-row-nopadding" *ngFor="let n of cols">
+        <ion-col class="ion-col-nopadding" *ngFor="let m of rows" style="text-align:center">
+          <div *ngIf="(m+n) <  (fullTab[0].kanaTab).length">
+            <ion-card *ngIf="isOk(fullTab[0].kanaTab[m+n].romanji)" [ngClass]="fullTab[0].kanaTab[m+n].katakanaIsLearned ? 'ion-card-active' : 'ion-card-inactive'" (tap)="onToggleState(m+n, 0)">
+              <ion-label>
+                <font size="6">{{fullTab[0].kanaTab[m+n].katakana}}</font>
+              </ion-label>
+              <ion-label>
+                {{fullTab[0].kanaTab[m+n].romanji}}
+              </ion-label>
+            </ion-card>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-list-header (tap)="onToggleKanaCats(1)">
+      <ion-icon [name]="kanaCat[1].isExpanded ? 'arrow-dropdown' : 'arrow-dropright'" item-left></ion-icon>
+      Group 2: Variants
+    </ion-list-header>
+    <ion-item *ngIf="kanaCat[1].isExpanded">
+      lists...
+    </ion-item>
+
+    <ion-list-header (tap)="onToggleKanaCats(2)">
+      <ion-icon [name]="kanaCat[2].isExpanded ? 'arrow-dropdown' : 'arrow-dropright'" item-left></ion-icon>
+      Group 3: Compounds
+    </ion-list-header>
+    <ion-item *ngIf="kanaCat[2].isExpanded">
+      lists...
+    </ion-item>
+  </ion-list>
 
 </ion-content>
-
-<!-- 
-        <button ion-button [color] = "katakanaTab[m+n].katakanaIsLearned ? 'secondary' : 'dark'" clear (click)="onToggleState(m+n)">
-          <font size="6">{{katakanaTab[m+n].katakana}}</font>
-        </button> -->

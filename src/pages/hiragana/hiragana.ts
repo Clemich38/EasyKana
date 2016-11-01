@@ -13,10 +13,15 @@ import { Storage } from '@ionic/storage';
 })
 export class HiraganaPage {
     
-  hiraganaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
-  hiraganaCat: Array<{isExpanded: boolean}>;
+  kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
+  kanaCat: Array<{isExpanded: boolean}>;
+  fullTab: Array<{kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>}>
   cols: any;
   rows: any;
+  cols1: any;
+  rows1: any;
+  cols2: any;
+  rows2: any;
 
   constructor(public navCtrl: NavController,
               public popoverCtrl: PopoverController,
@@ -24,16 +29,26 @@ export class HiraganaPage {
               public kanas: Kanas)
   {
     // Temporary init (to be retreived from Storage)
-    this.hiraganaCat = [];
-    this.hiraganaCat.push({isExpanded: true});
-    this.hiraganaCat.push({isExpanded: true});
-    this.hiraganaCat.push({isExpanded: true});
+    this.kanaCat = [];
+    this.kanaCat.push({isExpanded: true});
+    this.kanaCat.push({isExpanded: true});
+    this.kanaCat.push({isExpanded: true});
 
-  	this.hiraganaTab = kanas.getTab();
+    // Get Hiragana Array
+    this.fullTab = [];
+  	// this.fullTab = kanas.getFullTab();
+    this.fullTab.push({kanaTab: kanas.getTab(0)});
+    this.fullTab.push({kanaTab: kanas.getTab(1)});
+    this.fullTab.push({kanaTab: kanas.getTab(2)});
 
-  	this.cols = this.range(0, ((this.hiraganaTab).length - 1), 5);
-  	// this.cols = [0, 5, 10, 15, 20];
+  	this.cols = this.range(0, ((this.fullTab[0].kanaTab).length - 1), 5);
   	this.rows = this.range(0, 4, 1);
+
+  	this.cols1 = this.range(0, (this.fullTab[1].kanaTab.length - 1), 5);
+  	this.rows1 = this.range(0, 4, 1);
+
+  	this.cols2 = this.range(0, (this.fullTab[2].kanaTab.length - 1), 3);
+  	this.rows2 = this.range(0, 2, 1);
 	}
 	
 	range(min, max, step) {
@@ -46,14 +61,14 @@ export class HiraganaPage {
     return tab;
   }
 
-  onToggleState(index) {
-    if(this.hiraganaTab[index].hiraganaIsLearned)
-      this.hiraganaTab[index].hiraganaIsLearned = false;
+  onToggleState(index, category) {
+    if(this.fullTab[category].kanaTab[index].hiraganaIsLearned)
+      this.fullTab[category].kanaTab[index].hiraganaIsLearned = false;
     else
-      this.hiraganaTab[index].hiraganaIsLearned = true;
+      this.fullTab[category].kanaTab[index].hiraganaIsLearned = true;
 
     // Save it
-    this.kanas.saveData();
+    this.kanas.saveData(category);
   }
 
   onOpenOptions(event)
@@ -78,9 +93,9 @@ export class HiraganaPage {
       return false;
   }
 
-  onToggleHiraganaCats(category)
+  onToggleKanaCats(category)
   {
-    this.hiraganaCat[category].isExpanded = !(this.hiraganaCat[category].isExpanded); 
+    this.kanaCat[category].isExpanded = !(this.kanaCat[category].isExpanded); 
   }
 
   ionViewDidLoad()
