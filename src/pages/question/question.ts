@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { NavParams } from 'ionic-angular';
 
 import { Kanas } from '../../providers/kanas';
 import { ResultPage } from '../result/result';
 
-/*
-  Generated class for the Question page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-  */
   @Component({
     selector: 'page-question',
     templateUrl: 'question.html'
@@ -19,17 +15,22 @@ import { ResultPage } from '../result/result';
     kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
     fullTab: Array<{kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;}>
   
-    quizTab: Array<{hiragana: string, romanji: string, succes: boolean}>;
+    quizTab: Array<{kana: string, romanji: string, succes: boolean}>;
     responseTab: Array<{romanji: string, isGood: boolean, hasBeenClicked: boolean}>;
     iterator: number;
     size: number;
     nextStr: string;
     nextDisable : boolean;
     quizIsOver : boolean;
+    quizType : number;
 
     constructor(public navCtrl: NavController,
-      public kanas: Kanas)
+  						  public navParams: NavParams,
+                public kanas: Kanas)
     {
+    // Get the quiz type (hiragana or katakana)
+    this.quizType = this.navParams.get('type');
+
   	// Full kana array
   	this.iterator = 0;
   	this.size = 4;
@@ -39,6 +40,8 @@ import { ResultPage } from '../result/result';
 
     this.fullTab = kanas.getFullTab();
     this.kanaTab = this.fullTab[0].kanaTab;
+    this.kanaTab = this.kanaTab.concat(this.fullTab[1].kanaTab);
+    this.kanaTab = this.kanaTab.concat(this.fullTab[2].kanaTab);
 
   	// Build quiz array
   	this.buildQuizTab();
@@ -62,13 +65,27 @@ import { ResultPage } from '../result/result';
     this.quizTab = [];
     for (let i in this.kanaTab)
     {
-      if(this.kanaTab[i].hiraganaIsLearned && this.kanaTab[i].romanji.localeCompare("")) 
-    	{
-        this.quizTab.push({
-          hiragana: this.kanaTab[i].hiragana,
-          romanji:  this.kanaTab[i].romanji,
-          succes: false
-        });
+      if(this.quizType === 0)
+      {
+        if(this.kanaTab[i].hiraganaIsLearned && this.kanaTab[i].romanji.localeCompare("")) 
+        {
+          this.quizTab.push({
+            kana: this.kanaTab[i].hiragana,
+            romanji:  this.kanaTab[i].romanji,
+            succes: false
+          });
+        }
+      }
+      else
+      {
+        if(this.kanaTab[i].katakanaIsLearned && this.kanaTab[i].romanji.localeCompare("")) 
+        {
+          this.quizTab.push({
+            kana: this.kanaTab[i].katakana,
+            romanji:  this.kanaTab[i].romanji,
+            succes: false
+          });
+        }
       }
     }
 

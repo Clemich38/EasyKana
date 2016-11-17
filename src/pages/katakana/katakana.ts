@@ -13,9 +13,9 @@ import { Storage } from '@ionic/storage';
 })
 export class KatakanaPage {
     
-  // kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
+  kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
   kanaCat: Array<{isExpanded: boolean}>;
-  fullTab: Array<{kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;}>
+  fullTab: Array<{kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>}>
   cols: any;
   rows: any;
   cols1: any;
@@ -35,15 +35,19 @@ export class KatakanaPage {
     this.kanaCat.push({isExpanded: true});
 
     // Get katakana Array
-  	this.fullTab = kanas.getFullTab();
+    this.fullTab = [];
+  	// this.fullTab = kanas.getFullTab();
+    this.fullTab.push({kanaTab: kanas.getTab(0)});
+    this.fullTab.push({kanaTab: kanas.getTab(1)});
+    this.fullTab.push({kanaTab: kanas.getTab(2)});
 
-  	this.cols = this.range(0, ((this.fullTab[0]).kanaTab.length - 1), 5);
+  	this.cols = this.range(0, ((this.fullTab[0].kanaTab).length - 1), 5);
   	this.rows = this.range(0, 4, 1);
 
-  	this.cols1 = this.range(0, ((this.fullTab[1]).kanaTab.length - 1), 5);
+  	this.cols1 = this.range(0, (this.fullTab[1].kanaTab.length - 1), 5);
   	this.rows1 = this.range(0, 4, 1);
 
-  	this.cols2 = this.range(0, ((this.fullTab[2]).kanaTab.length - 1), 3);
+  	this.cols2 = this.range(0, (this.fullTab[2].kanaTab.length - 1), 3);
   	this.rows2 = this.range(0, 2, 1);
 	}
 	
@@ -96,6 +100,6 @@ export class KatakanaPage {
 
   ionViewDidLoad()
   {
-    console.log('Hello Katakana Page');
+    console.log('Hello katakana Page');
   }
 }

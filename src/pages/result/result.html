@@ -14,7 +14,7 @@
   	</ion-list-header>
   	<ion-item *ngFor="let result of resultTab" >
 	    <ion-label>
-	      <font size="5">{{result.hiragana}}</font>
+	      <font size="5">{{result.kana}}</font>
 	      &nbsp;{{result.romanji}}
 	    </ion-label>
 	    <ion-icon [name]="result.succes ? 'checkmark' : 'close'" [color]="result.succes ? 'secondary' : 'danger'" item-right></ion-icon>

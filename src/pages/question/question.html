@@ -19,7 +19,7 @@
 			<ion-col width-25></ion-col>
 			<ion-col *ngIf="quizTab.length > 0" width-50  style="text-align: center">
 		  	<div>
-		        <font size="8">{{quizTab[iterator].hiragana}}</font>
+		        <font size="8">{{quizTab[iterator].kana}}</font>
 		    </div>
 		  	<div *ngFor="let response of responseTab">
 		  			<span [ngSwitch]="response.hasBeenClicked" >

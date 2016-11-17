@@ -48,8 +48,8 @@
       Group 2: Variants
     </ion-list-header>
     <ion-grid *ngIf="kanaCat[1].isExpanded">
-      <ion-row class="ion-row-nopadding" *ngFor="let n of cols">
-        <ion-col class="ion-col-nopadding" *ngFor="let m of rows" style="text-align:center">
+      <ion-row class="ion-row-nopadding" *ngFor="let n of cols1">
+        <ion-col class="ion-col-nopadding" *ngFor="let m of rows1" style="text-align:center">
           <div *ngIf="(m+n) <  fullTab[1].kanaTab.length">
             <ion-card *ngIf="isOk(fullTab[1].kanaTab[m+n].romanji)" [ngClass]="fullTab[1].kanaTab[m+n].hiraganaIsLearned ? 'ion-card-active' : 'ion-card-inactive'" (tap)="onToggleState(m+n, 1)">
               <ion-label>
@@ -68,9 +68,22 @@
       <ion-icon [name]="kanaCat[2].isExpanded ? 'arrow-dropdown' : 'arrow-dropright'" item-left></ion-icon>
       Group 3: Compounds
     </ion-list-header>
-    <ion-item *ngIf="kanaCat[2].isExpanded">
-      lists...
-    </ion-item>
+    <ion-grid *ngIf="kanaCat[2].isExpanded">
+      <ion-row class="ion-row-nopadding" *ngFor="let n of cols2">
+        <ion-col class="ion-col-nopadding" *ngFor="let m of rows2" style="text-align:center">
+          <div *ngIf="(m+n) <  fullTab[2].kanaTab.length">
+            <ion-card *ngIf="isOk(fullTab[2].kanaTab[m+n].romanji)" [ngClass]="fullTab[2].kanaTab[m+n].hiraganaIsLearned ? 'ion-card-active' : 'ion-card-inactive'" (tap)="onToggleState(m+n, 2)">
+              <ion-label>
+                <font size="6">{{fullTab[2].kanaTab[m+n].hiragana}}</font>
+              </ion-label>
+              <ion-label>
+                {{fullTab[2].kanaTab[m+n].romanji}}
+              </ion-label>
+            </ion-card>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-list>
 
 </ion-content>

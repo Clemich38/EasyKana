@@ -12,8 +12,8 @@ export class QuizPage {
   constructor(public navCtrl: NavController) {}
 
 
-  openQuestion() {
-    this.navCtrl.push(QuestionPage);
+  openQuestion(type) {
+    this.navCtrl.push(QuestionPage, {type: type});
   }
 
   ionViewDidLoad() {
