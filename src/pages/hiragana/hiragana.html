@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="dark">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -18,17 +18,17 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content class="back">
 
   <ion-list>
     
-    <ion-list-header (tap)="onToggleKanaCats(0)">
+    <ion-list-header (tap)="onToggleKanaCats(0)" class="headertransparent">
       <ion-icon [name]="kanaCat[0].isExpanded ? 'arrow-dropdown' : 'arrow-dropright'" item-left></ion-icon>
       Group 1: Basics
     </ion-list-header>
     <ion-grid *ngIf="kanaCat[0].isExpanded">
       <ion-row class="ion-row-nopadding" *ngFor="let n of cols">
-        <ion-col class="ion-col-nopadding" *ngFor="let m of rows" style="text-align:center">
+        <ion-col class="ion-col-nopadding" *ngFor="let m of rows" style="text-align:center" width-20>
           <div *ngIf="(m+n) <  fullTab[0].kanaTab.length">
             <ion-card *ngIf="isOk(fullTab[0].kanaTab[m+n].romanji)" [ngClass]="fullTab[0].kanaTab[m+n].hiraganaIsLearned ? 'ion-card-active' : 'ion-card-inactive'" (tap)="onToggleState(m+n, 0)">
               <ion-label>
@@ -43,7 +43,7 @@
       </ion-row>
     </ion-grid>
 
-    <ion-list-header (tap)="onToggleKanaCats(1)">
+    <ion-list-header (tap)="onToggleKanaCats(1)" class="headertransparent">
       <ion-icon [name]="kanaCat[1].isExpanded ? 'arrow-dropdown' : 'arrow-dropright'" item-left></ion-icon>
       Group 2: Variants
     </ion-list-header>
@@ -64,7 +64,7 @@
       </ion-row>
     </ion-grid>
 
-    <ion-list-header (tap)="onToggleKanaCats(2)">
+    <ion-list-header (tap)="onToggleKanaCats(2)" class="headertransparent">
       <ion-icon [name]="kanaCat[2].isExpanded ? 'arrow-dropdown' : 'arrow-dropright'" item-left></ion-icon>
       Group 3: Compounds
     </ion-list-header>
