@@ -12,13 +12,15 @@ page-katakana {
     };
 
     .ion-card-active{
-        background-color: lightgreen;
+        background-color: rgba( lightgreen, 0.8);
         margin: 0 !important;
+        width: 100%;
     };
 
     .ion-card-inactive{
-        background-color: lightgrey;
+        background-color:rgba( lightgrey, 0.6);
         margin: 0 !important;
+        width: 100%;
     };
 
 }
