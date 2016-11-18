@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="dark">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -10,26 +10,26 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="back" padding>
 
 	<ion-grid>
 		<ion-row>
-			<ion-col width-20></ion-col>
-			<ion-col width-60>
+			<ion-col width-15></ion-col>
+			<ion-col width-70>
 				<div style="text-align: center">
-					<button ion-button center block color="dark" class="space" (click)="openQuestion(0)">Hiragana Quiz Start</button>
+					<button ion-button center block large outline color="dark" text-lowercase text-capitalize class="space" (click)="openQuestion(0)">Hiragana Quiz</button>
 				</div>
 				<div style="text-align: center">
-					<button ion-button center block color="dark" class="space" (click)="openQuestion(1)">Katakana Quiz Start</button>
+					<button ion-button center block large outline color="dark" text-lowercase text-capitalize class="space" (click)="openQuestion(1)">Katakana Quiz</button>
 				</div>
+				<!--<div style="text-align: center">
+					<button ion-button center block color="dark" text-lowercase text-capitalize class="space">Quiz Settings</button>
+				</div>-->
 				<div style="text-align: center">
-					<button ion-button center block color="dark" class="space">Quiz Settings</button>
-				</div>
-				<div style="text-align: center">
-					<button ion-button center block color="dark" class="space" menuToggle>Learning</button>
+					<button ion-button center block large outline color="dark" text-lowercase text-capitalize class="space" menuToggle>Learning</button>
 				</div>
 			</ion-col>
-			<ion-col width-20></ion-col>
+			<ion-col width-15></ion-col>
 		</ion-row>
 	</ion-grid>
 

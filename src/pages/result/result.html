@@ -1,18 +1,18 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>result</ion-title>
+  <ion-navbar color="dark">
+    <ion-title>Result</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content>
+<ion-content class="back" padding>
   <ion-list>
-  	<ion-list-header>
+  	<ion-list-header class="headertransparent">
   		Good results: {{goodPercentage}}%
   	</ion-list-header>
-  	<ion-item *ngFor="let result of resultTab" >
+  	<ion-item *ngFor="let result of resultTab" class="itemtransparent">
 	    <ion-label>
 	      <font size="5">{{result.kana}}</font>
 	      &nbsp;{{result.romanji}}
