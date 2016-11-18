@@ -13,7 +13,6 @@ import { Storage } from '@ionic/storage';
 })
 export class HiraganaPage {
     
-  kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
   kanaCat: Array<{isExpanded: boolean}>;
   fullTab: Array<{kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>}>
   cols: any;
@@ -31,15 +30,12 @@ export class HiraganaPage {
     // Temporary init (to be retreived from Storage)
     this.kanaCat = [];
     this.kanaCat.push({isExpanded: true});
-    this.kanaCat.push({isExpanded: true});
-    this.kanaCat.push({isExpanded: true});
+    this.kanaCat.push({isExpanded: false});
+    this.kanaCat.push({isExpanded: false});
 
     // Get Hiragana Array
     this.fullTab = [];
-  	// this.fullTab = kanas.getFullTab();
-    this.fullTab.push({kanaTab: kanas.getTab(0)});
-    this.fullTab.push({kanaTab: kanas.getTab(1)});
-    this.fullTab.push({kanaTab: kanas.getTab(2)});
+  	this.fullTab = kanas.getFullTab();
 
   	this.cols = this.range(0, ((this.fullTab[0].kanaTab).length - 1), 5);
   	this.rows = this.range(0, 4, 1);
