@@ -23,6 +23,8 @@ import { ResultPage } from '../result/result';
     nextDisable : boolean;
     quizIsOver : boolean;
     quizType : number;
+    quizModeQCM : boolean;
+    answer: string;
 
     constructor(public navCtrl: NavController,
   						  public navParams: NavParams,
@@ -30,6 +32,7 @@ import { ResultPage } from '../result/result';
     {
     // Get the quiz type (hiragana or katakana)
     this.quizType = this.navParams.get('type');
+    this.quizModeQCM = this.navParams.get('mode');
 
   	// Full kana array
   	this.iterator = 0;
@@ -37,6 +40,7 @@ import { ResultPage } from '../result/result';
   	this.nextStr = "Next";
     this.quizIsOver = false;
     this.nextDisable = true;
+    this.answer = "";
 
     this.fullTab = kanas.getFullTab();
     this.kanaTab = this.fullTab[0].kanaTab;
@@ -46,15 +50,19 @@ import { ResultPage } from '../result/result';
   	// Build quiz array
   	this.buildQuizTab();
 
-  	if(this.quizTab.length)
-  	{
-	  	// build the first responses array
-	  	this.buildResponseTab(this.size, this.iterator);
-	  }
-    else
+    // Build Response Tab only for QCM mode
+    if(this.quizModeQCM)
     {
-      this.quizIsOver = true;
-      this.nextStr = "No kana...";
+      if(this.quizTab.length)
+      {
+        // build the first responses array
+        this.buildResponseTab(this.size, this.iterator);
+      }
+      else
+      {
+        this.quizIsOver = true;
+        this.nextStr = "No kana...";
+      }
     }
 
   }
@@ -152,13 +160,26 @@ import { ResultPage } from '../result/result';
       this.nextStr = "Show results";
     }
 
-		// Set Response button state
-		response.hasBeenClicked = true;
-
-    // Check the result
-    if(response.isGood && this.nextDisable == true)
+    // If it's a QCM
+    if(this.quizModeQCM === true)
     {
-      this.quizTab[this.iterator].succes = true;
+      // Set Response button state
+      response.hasBeenClicked = true;
+
+      // Check the result
+      if(response.isGood && this.nextDisable == true)
+      {
+        this.quizTab[this.iterator].succes = true;
+      }
+    }
+    // Input answer Mode
+    else if(this.quizModeQCM === false)
+    {
+      // Check the result
+      if((!(this.quizTab[this.iterator].romanji.localeCompare(this.answer))) && (this.nextDisable == true))
+      {
+        this.quizTab[this.iterator].succes = true;
+      }
     }
 
     this.nextDisable = false;
@@ -187,6 +208,7 @@ import { ResultPage } from '../result/result';
     }
     return false;
   }
+
 
   ionViewDidLoad() {
     console.log('Hello Question Page');

@@ -5,3 +5,19 @@ page-question {
 		margin-top   :15px;
     margin-bottom:15px;
 }
+
+.inputtransparent {
+	border-color: rgba(0, 0, 0, 0);
+	background-color: rgba(white, 0.3);
+	color: dark; 
+}
+.inputred {
+	border-color: rgba(0, 0, 0, 0);
+	background-color: rgba(orangered, 0.3);
+	color: dark; 
+}
+.inputgreen {
+	border-color: rgba(0, 0, 0, 0);
+	background-color: rgba(springgreen, 0.3);
+	color: dark; 
+}
