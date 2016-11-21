@@ -176,7 +176,7 @@ import { ResultPage } from '../result/result';
     else if(this.quizModeQCM === false)
     {
       // Check the result
-      if((!(this.quizTab[this.iterator].romanji.localeCompare(this.answer))) && (this.nextDisable == true))
+      if((!(this.quizTab[this.iterator].romanji.localeCompare(this.answer.toLowerCase()))) && (this.nextDisable == true))
       {
         this.quizTab[this.iterator].succes = true;
       }
@@ -191,7 +191,13 @@ import { ResultPage } from '../result/result';
     {
       this.nextDisable = true;
       this.iterator++;
-      this.buildResponseTab(this.size, this.iterator);
+
+      // If it's a QCM
+      if(this.quizModeQCM === true)
+        this.buildResponseTab(this.size, this.iterator);
+      // Input answer Mode
+      else if(this.quizModeQCM === false)
+        this.answer = "";
     }
     else
     {
