@@ -31,7 +31,8 @@ export class ResultPage {
   ionViewDidLoad() {
     console.log('Hello Result Page');
 
-    // Remove previous page so the back button go back to the quiz page
+    // Remove the 2 previous pages so the back button go back to the quiz page
+    this.navCtrl.remove(this.navCtrl.indexOf(this.navCtrl.getPrevious(this.navCtrl.getActive())));
     this.navCtrl.remove(this.navCtrl.indexOf(this.navCtrl.getPrevious(this.navCtrl.getActive())));
   }
 

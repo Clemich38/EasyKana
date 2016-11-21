@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { QuestionPage } from '../question/question';
+import { SettingsPage } from '../settings/settings';
 
 @Component({
   selector: 'page-quiz',
@@ -12,8 +12,8 @@ export class QuizPage {
   constructor(public navCtrl: NavController) {}
 
 
-  openQuestion(type, mode) {
-    this.navCtrl.push(QuestionPage, {type: type, mode: mode});
+  openSettings(type) {
+    this.navCtrl.push(SettingsPage, {type: type});
   }
 
   ionViewDidLoad() {

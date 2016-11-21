@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { QuizPage } from '../pages/quiz/quiz';
+import { SettingsPage } from '../pages/settings/settings';
 import { QuestionPage } from '../pages/question/question';
 import { ResultPage } from '../pages/result/result';
 import { HiraganaPage } from '../pages/hiragana/hiragana';
@@ -17,6 +18,7 @@ import { Storage } from '@ionic/storage';
   declarations: [
     MyApp,
     QuizPage,
+    SettingsPage,
     QuestionPage,
     ResultPage,
     HiraganaPage,
@@ -32,6 +34,7 @@ import { Storage } from '@ionic/storage';
   entryComponents: [
     MyApp,
     QuizPage,
+    SettingsPage,
     QuestionPage,
     ResultPage,
     HiraganaPage,
