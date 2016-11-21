@@ -69,7 +69,7 @@ export class KatakanaPage {
 
   onOpenOptions(event)
   {
-    let popover = this.popoverCtrl.create(PopoverMenuPage);
+    let popover = this.popoverCtrl.create(PopoverMenuPage, {type: 1});
     popover.present({
       ev: event
     });

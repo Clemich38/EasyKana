@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
+import { NavParams } from 'ionic-angular';
 import { Kanas } from '../../providers/kanas';
 import { Storage } from '@ionic/storage';
 
@@ -10,16 +11,15 @@ import { Storage } from '@ionic/storage';
 export class PopoverMenuPage {
 
   kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
-  kanaTabV: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
-  kanaTabC: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
-  
+  kanaType: number;
+
   constructor(public viewCtrl: ViewController,
               public storage: Storage,
+  						public navParams: NavParams,
               public kanas: Kanas)
   {
-    this.kanaTab = kanas.getTab(0);
-    this.kanaTabV = kanas.getTab(1);
-    this.kanaTabC = kanas.getTab(2);
+    // Get the kana type (hiragana or katakana)
+    this.kanaType = this.navParams.get('type');
   }
 
   selectAll(category)
@@ -38,7 +38,12 @@ export class PopoverMenuPage {
       return;
 
     for(let hir of this.kanaTab)
-      hir.hiraganaIsLearned = true;
+    {
+      if(this.kanaType === 0)
+        hir.hiraganaIsLearned = true;
+      else if (this.kanaType === 1)
+        hir.katakanaIsLearned = true;
+    }
 
     // Save it
     if((category >= 0) && (category <= 2))
@@ -63,7 +68,10 @@ export class PopoverMenuPage {
 
     // Deselect all
     for(let hir of this.kanaTab)
-      hir.hiraganaIsLearned = false;
+      if(this.kanaType === 0)
+        hir.hiraganaIsLearned = false;
+      else if (this.kanaType === 1)
+        hir.katakanaIsLearned = false;
 
     // Save it
     this.saveAll();
