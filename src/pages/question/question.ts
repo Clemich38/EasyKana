@@ -12,10 +12,10 @@ import { ResultPage } from '../result/result';
   })
   export class QuestionPage {
 
-    kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
-    fullTab: Array<{kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;}>
+    kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean, category: number}>;
+    fullTab: Array<{kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean, category: number}>;}>
   
-    quizTab: Array<{kana: string, romanji: string, succes: boolean}>;
+    quizTab: Array<{kana: string, romanji: string, category: number, succes: boolean}>;
     responseTab: Array<{romanji: string, isGood: boolean, hasBeenClicked: boolean}>;
     iterator: number;
     size: number;
@@ -80,6 +80,7 @@ import { ResultPage } from '../result/result';
           this.quizTab.push({
             kana: this.kanaTab[i].hiragana,
             romanji:  this.kanaTab[i].romanji,
+            category: this.kanaTab[i].category,
             succes: false
           });
         }
@@ -91,6 +92,7 @@ import { ResultPage } from '../result/result';
           this.quizTab.push({
             kana: this.kanaTab[i].katakana,
             romanji:  this.kanaTab[i].romanji,
+            category: this.kanaTab[i].category,
             succes: false
           });
         }
@@ -106,19 +108,25 @@ import { ResultPage } from '../result/result';
   	//Partial "quiz" array
     this.responseTab = [];
     var index = 1;
+    var randomIndex = 0;
     var str = "";
+    var goodAnswerCategory = 0;
+    var category = 0;
     var strTab = [];
 
     // First item in the array is the correct answer
     this.responseTab.push({romanji: this.quizTab[golbalIndex].romanji, isGood:  true, hasBeenClicked: false});
     strTab[0] = this.quizTab[golbalIndex].romanji;
+    goodAnswerCategory = this.quizTab[golbalIndex].category;
 
     while (index < size) 
     {
-    	str = this.kanaTab[Math.floor(Math.random() * (this.kanaTab.length - 1))].romanji;
+      randomIndex = Math.floor(Math.random() * (this.kanaTab.length - 1));
+    	str = this.kanaTab[randomIndex].romanji;
+      category = this.kanaTab[randomIndex].category;
 
-      // Check if the answer is not empty or already present in the response array
-    	if(str.localeCompare("") && !(this.checkIfAlreadyPicked(str, strTab)))
+      // Check if the answer is not empty or already present in the response array and from the same category
+    	if(str.localeCompare("") && !(this.checkIfAlreadyPicked(str, strTab)) && (category === goodAnswerCategory))
     	{
         this.responseTab.push({romanji: str, isGood: false, hasBeenClicked: false});
         strTab[index++] = str; 

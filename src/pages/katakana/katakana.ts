@@ -14,7 +14,7 @@ import { Storage } from '@ionic/storage';
 export class KatakanaPage {
     
   kanaCat: Array<{isExpanded: boolean}>;
-  fullTab: Array<{kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>}>
+  fullTab: Array<{kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean, category: number}>}>
   cols: any;
   rows: any;
   cols1: any;
