@@ -29,9 +29,7 @@ export class KatakanaPage {
   {
     // Temporary init (to be retreived from Storage)
     this.kanaCat = [];
-    this.kanaCat.push({isExpanded: true});
-    this.kanaCat.push({isExpanded: false});
-    this.kanaCat.push({isExpanded: false});
+    this.kanaCat = kanas.getKatakanaCat();
 
     // Get katakana Array
     this.fullTab = [];

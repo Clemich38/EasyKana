@@ -8,6 +8,9 @@ export class Kanas {
     kanaTab1: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean, category: number}>;
     kanaTab2: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean, category: number}>;
     fullTab: Array<{kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean, category: number}>}>;
+    hiraganaCat: Array<{isExpanded: boolean}>;
+    katakanaCat: Array<{isExpanded: boolean}>;
+
 
     constructor(public storage: Storage) 
     {
@@ -16,6 +19,16 @@ export class Kanas {
         this.kanaTab0 = [];
         this.kanaTab1 = [];
         this.kanaTab2 = [];
+
+        this.hiraganaCat = [];
+        this.hiraganaCat.push({isExpanded: true});
+        this.hiraganaCat.push({isExpanded: false});
+        this.hiraganaCat.push({isExpanded: false});
+        this.katakanaCat = [];
+        this.katakanaCat.push({isExpanded: true});
+        this.katakanaCat.push({isExpanded: false});
+        this.katakanaCat.push({isExpanded: false});
+
         this.fullTab.push({kanaTab: this.kanaTab0});
         this.fullTab.push({kanaTab: this.kanaTab1});
         this.fullTab.push({kanaTab: this.kanaTab2});
@@ -39,7 +52,9 @@ export class Kanas {
             {
             console.error('Error fetching kana', ex);
             });
-        }        
+        }     
+
+
     }
 
     getTab(category)
@@ -50,6 +65,16 @@ export class Kanas {
     getFullTab()
     {
         return this.fullTab;
+    }
+
+    getHiraganaCat()
+    {
+        return this.hiraganaCat;
+    }
+
+    getKatakanaCat()
+    {
+        return this.katakanaCat;
     }
 
     buildKanaTab(category)
@@ -212,7 +237,7 @@ export class Kanas {
             default:
                 this.storage.set('kana', newData);
         }
-    }
 
+    }
 
 }
