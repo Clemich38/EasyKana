@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonicApp, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { QuizPage } from '../pages/quiz/quiz';
 import { SettingsPage } from '../pages/settings/settings';
@@ -43,6 +43,6 @@ import { Storage } from '@ionic/storage';
     PopoverMenuPage,
     InfoPage
   ],
-  providers: [Kanas, AdMobModule, Storage]
+  providers: [Kanas, AdMobModule, Storage, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
