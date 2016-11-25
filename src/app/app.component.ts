@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
-import { StatusBar } from 'ionic-native';
+import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { QuizPage } from '../pages/quiz/quiz';
 import { HiraganaPage } from '../pages/hiragana/hiragana';
@@ -44,6 +44,8 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
+      if (Splashscreen)
+        Splashscreen.hide();
     });
   }
 
