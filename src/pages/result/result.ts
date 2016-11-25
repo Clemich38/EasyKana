@@ -32,8 +32,8 @@ export class ResultPage {
     console.log('Hello Result Page');
 
     // Remove the 2 previous pages so the back button go back to the quiz page
-    this.navCtrl.remove(this.navCtrl.indexOf(this.navCtrl.getPrevious(this.navCtrl.getActive())));
-    this.navCtrl.remove(this.navCtrl.indexOf(this.navCtrl.getPrevious(this.navCtrl.getActive())));
+    // this.navCtrl.remove(this.navCtrl.indexOf(this.navCtrl.getPrevious(this.navCtrl.getActive())));
+    // this.navCtrl.remove(this.navCtrl.indexOf(this.navCtrl.getPrevious(this.navCtrl.getActive())));
   }
 
 }

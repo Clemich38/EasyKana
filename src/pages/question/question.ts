@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ViewController, NavController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
 
 import { Kanas } from '../../providers/kanas';
@@ -28,6 +28,7 @@ import { ResultPage } from '../result/result';
 
     constructor(public navCtrl: NavController,
   						  public navParams: NavParams,
+                public viewCtrl: ViewController,
                 public kanas: Kanas)
     {
     // Get the quiz type (hiragana or katakana)
@@ -209,7 +210,14 @@ import { ResultPage } from '../result/result';
     }
     else
     {
-    	this.navCtrl.push(ResultPage, {resTab: this.quizTab});
+    	this.navCtrl
+        .push(ResultPage, {resTab: this.quizTab})
+        .then(() => {
+        // first we find the index of the current view controller:
+        const index = this.viewCtrl.index;
+        // then we remove it and the previous page from the navigation stack
+        this.navCtrl.remove((index - 1), 2);
+      });
     }
   }
 
