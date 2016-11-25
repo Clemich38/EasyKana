@@ -4,10 +4,10 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class Kanas {
 
-    kanaTab0: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
-    kanaTab1: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
-    kanaTab2: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
-    fullTab: Array<{kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>}>;
+    kanaTab0: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean, category: number}>;
+    kanaTab1: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean, category: number}>;
+    kanaTab2: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean, category: number}>;
+    fullTab: Array<{kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean, category: number}>}>;
 
     constructor(public storage: Storage) 
     {
@@ -54,7 +54,7 @@ export class Kanas {
 
     buildKanaTab(category)
     {
-        var kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean}>;
+        var kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean, category: number}>;
         var hiraganas=[];
         var katakanas=[];
         var romanjis=[];
@@ -171,7 +171,8 @@ export class Kanas {
                 katakana: katakanas[i],
                 romanji:  romanjis[i],
                 hiraganaIsLearned: false,
-                katakanaIsLearned: false
+                katakanaIsLearned: false,
+                category: category
             });
         }
         console.log('Kanas Tab Created');

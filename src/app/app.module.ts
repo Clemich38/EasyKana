@@ -11,6 +11,7 @@ import { KatakanaPage } from '../pages/katakana/katakana';
 import { PopoverMenuPage } from '../pages/popover-menu/popover-menu';
 import { InfoPage } from '../pages/info/info';
 import { Kanas } from '../providers/kanas';
+import { AdMobModule } from '../providers/Ad-mob-module';
 
 import { Storage } from '@ionic/storage';
 
@@ -42,6 +43,6 @@ import { Storage } from '@ionic/storage';
     PopoverMenuPage,
     InfoPage
   ],
-  providers: [Kanas, Storage]
+  providers: [Kanas, AdMobModule, Storage]
 })
 export class AppModule {}

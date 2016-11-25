@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 
 import { SettingsPage } from '../settings/settings';
+import { AdMobModule } from '../../providers/Ad-mob-module';
 
-declare var AdMob: any;
+// declare var AdMob: any;
 
 @Component({
   selector: 'page-quiz',
@@ -11,51 +12,14 @@ declare var AdMob: any;
 })
 export class QuizPage {
 
-  private admobId: any;
+  // private admobId: any;
+  isCreated : boolean;
+  isDisplayed : boolean;
 
-  constructor(public navCtrl: NavController, public platform: Platform) {
-    this.platform = platform;
+  constructor(public navCtrl: NavController, public platform: Platform, public adMobModule: AdMobModule) {
 
-    if (/(android)/i.test(navigator.userAgent))
-      this.admobId = { banner: 'ca-app-pub-4689559823917632/6665370302' };
-
-    else if (/(ipod|iphone|ipad)/i.test(navigator.userAgent))
-      this.admobId = { banner: 'ca-app-pub-4689559823917632/9618836708' };
-
-    this.createBanner();
-    this.showBanner("bottom");
-
-  }
-
-  createBanner() {
-    this.platform.ready().then(() => {
-      if (AdMob) {
-        AdMob.createBanner({
-          adId: this.admobId.banner,
-          autoShow: false
-        });
-      }
-    });
-  }
-
-  showBanner(position) {
-    this.platform.ready().then(() => {
-      if (AdMob) {
-        var positionMap = {
-          "bottom": AdMob.AD_POSITION.BOTTOM_CENTER,
-          "top": AdMob.AD_POSITION.TOP_CENTER
-        };
-        AdMob.showBanner(positionMap[position.toLowerCase()]);
-      }
-    });
-  }
-
-  hideBanner(position) {
-    this.platform.ready().then(() => {
-      if (AdMob) {
-        AdMob.hideBanner();
-      }
-    });
+    // Create and display AdMob banner
+    adMobModule.createBanner();  
   }
 
   openSettings(type) {
