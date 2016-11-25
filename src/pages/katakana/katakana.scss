@@ -7,20 +7,18 @@ page-katakana {
     padding: 2px;
     }
 
-    .card-md{
-        width: 100%;
-    };
-
     .ion-card-active{
         background-color: rgba( lightgreen, 0.8);
         margin: 0 !important;
         width: 100%;
+        box-shadow: none;
     };
 
     .ion-card-inactive{
         background-color:rgba( lightgrey, 0.6);
         margin: 0 !important;
         width: 100%;
+        box-shadow: none;
     };
 
 }
