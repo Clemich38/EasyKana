@@ -12,14 +12,25 @@
 	border-color: rgba(0, 0, 0, 0);
 	background-color: rgba(white, 0.3);
 	color: dark; 
+	border-radius: 5px;
 }
 .inputred {
+	color: darkred;
 	border-color: rgba(0, 0, 0, 0);
 	background-color: rgba(red, 0.5);
 	color: dark; 
+	border-radius: 5px;
 }
 .inputgreen {
+	color: green;
 	border-color: rgba(0, 0, 0, 0);
 	background-color: rgba(springgreen, 0.5);
 	color: dark; 
+	border-radius: 5px;
+}
+.textred {
+	color: darkred !important;
+}
+.textgreen {
+	color: green !important;
 }
