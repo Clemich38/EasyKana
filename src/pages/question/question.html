@@ -46,7 +46,7 @@
 							</form>
 							<form (ngSubmit)="showResult()" *ngSwitchCase="false" class="formspace">
 								<ion-item [ngClass]="quizTab[iterator].succes ? 'inputgreen' : 'inputred'">
-									<ion-label floating [ngClass]="quizTab[iterator].succes ? 'textgreen' : 'textred'">{{quizTab[iterator].succes ? "Well done!" : ("Wrong! It was: " + quizTab[iterator].romanji)}}</ion-label>
+									<ion-label floating [ngClass]="quizTab[iterator].succes ? 'textgreen' : 'textred'">{{quizTab[iterator].succes ? "Well done!" : ("Oh no! It's: " + quizTab[iterator].romanji)}}</ion-label>
 									<ion-input type="text" [(ngModel)]="answer" [ngModelOptions]="{standalone: true}"></ion-input>
 								</ion-item>
 								<button ion-button block class="space" color="dark" type="submit" [disabled]="!nextDisable" block text-lowercase text-capitalize>Check</button>
@@ -66,7 +66,8 @@
 
 
   <div *ngIf="quizTab.length == 0">
-  	No kana selected for the Quiz!
+  	No kana selected for the Quiz!<br/>
+		Go to the kana learning pages and select the ones you've already learned.
   </div>
 </ion-content>
 

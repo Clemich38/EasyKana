@@ -51,7 +51,7 @@
       <ion-row class="ion-row-nopadding" *ngFor="let n of cols1">
         <ion-col class="ion-col-nopadding" *ngFor="let m of rows1" style="text-align:center">
           <div *ngIf="(m+n) <  fullTab[1].kanaTab.length">
-            <ion-card *ngIf="isOk(fullTab[1].kanaTab[m+n].romanji)" [ngClass]="fullTab[1].kanaTab[m+n].katakanaIsLearned ? 'ion-card-active' : 'ion-card-inactive'" (tap)="onToggleState(m+n, 1)">
+            <ion-card [ngClass]="fullTab[1].kanaTab[m+n].katakanaIsLearned ? 'ion-card-active' : 'ion-card-inactive'" (tap)="onToggleState(m+n, 1)">
               <ion-label>
                 <font size="6">{{fullTab[1].kanaTab[m+n].katakana}}</font>
               </ion-label>
@@ -72,7 +72,7 @@
       <ion-row class="ion-row-nopadding" *ngFor="let n of cols2">
         <ion-col class="ion-col-nopadding" *ngFor="let m of rows2" style="text-align:center">
           <div *ngIf="(m+n) <  fullTab[2].kanaTab.length">
-            <ion-card *ngIf="isOk(fullTab[2].kanaTab[m+n].romanji)" [ngClass]="fullTab[2].kanaTab[m+n].katakanaIsLearned ? 'ion-card-active' : 'ion-card-inactive'" (tap)="onToggleState(m+n, 2)">
+            <ion-card [ngClass]="fullTab[2].kanaTab[m+n].katakanaIsLearned ? 'ion-card-active' : 'ion-card-inactive'" (tap)="onToggleState(m+n, 2)">
               <ion-label>
                 <font size="6">{{fullTab[2].kanaTab[m+n].katakana}}</font>
               </ion-label>

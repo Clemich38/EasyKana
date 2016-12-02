@@ -4,8 +4,6 @@ import { Kanas } from '../../providers/kanas';
 import { PopoverMenuPage } from '../popover-menu/popover-menu';
 import { InfoPage } from '../info/info';
 
-import { Storage } from '@ionic/storage';
-
 
 @Component({
   selector: 'page-hiragana',
@@ -24,7 +22,6 @@ export class HiraganaPage {
 
   constructor(public navCtrl: NavController,
               public popoverCtrl: PopoverController,
-              public storage: Storage,
               public kanas: Kanas)
   {
     // Temporary init (to be retreived from Storage)
@@ -92,8 +89,8 @@ export class HiraganaPage {
     this.kanaCat[category].isExpanded = !(this.kanaCat[category].isExpanded); 
   }
 
-  ionViewDidLoad()
-  {
-    console.log('Hello Hiragana Page');
-  }
+  // ionViewDidLoad()
+  // {
+  //   console.log('Hello Hiragana Page');
+  // }
 }

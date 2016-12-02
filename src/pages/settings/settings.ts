@@ -23,8 +23,8 @@ export class SettingsPage {
     this.navCtrl.push(QuestionPage, {type: this.quizType, mode: mode});
   }
 
-  ionViewDidLoad() {
-    console.log('Hello Settings Page');
-  }
+  // ionViewDidLoad() {
+  //   console.log('Hello Settings Page');
+  // }
 
 }

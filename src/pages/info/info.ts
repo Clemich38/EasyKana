@@ -11,8 +11,8 @@ export class InfoPage {
 
   constructor(public navCtrl: NavController) {}
 
-  ionViewDidLoad() {
-    console.log('Hello Info Page');
-  }
+  // ionViewDidLoad() {
+  //   console.log('Hello Info Page');
+  // }
 
 }

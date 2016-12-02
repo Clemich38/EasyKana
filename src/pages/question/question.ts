@@ -232,8 +232,8 @@ import { ResultPage } from '../result/result';
   }
 
 
-  ionViewDidLoad() {
-    console.log('Hello Question Page');
-  }
+  // ionViewDidLoad() {
+  //   console.log('Hello Question Page');
+  // }
 
 }

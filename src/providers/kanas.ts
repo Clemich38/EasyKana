@@ -5,8 +5,6 @@ import { Injectable } from '@angular/core';
 export class Kanas {
 
     kanaTab0: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean, category: number}>;
-    kanaTab1: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean, category: number}>;
-    kanaTab2: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean, category: number}>;
     fullTab: Array<{kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean, category: number}>}>;
     hiraganaCat: Array<{isExpanded: boolean}>;
     katakanaCat: Array<{isExpanded: boolean}>;
@@ -17,8 +15,6 @@ export class Kanas {
         // Fetch kanas in Storage
         this.fullTab = [];
         this.kanaTab0 = [];
-        this.kanaTab1 = [];
-        this.kanaTab2 = [];
 
         this.hiraganaCat = [];
         this.hiraganaCat.push({isExpanded: true});
@@ -30,8 +26,8 @@ export class Kanas {
         this.katakanaCat.push({isExpanded: false});
 
         this.fullTab.push({kanaTab: this.kanaTab0});
-        this.fullTab.push({kanaTab: this.kanaTab1});
-        this.fullTab.push({kanaTab: this.kanaTab2});
+        this.fullTab.push({kanaTab: this.kanaTab0});
+        this.fullTab.push({kanaTab: this.kanaTab0});
 
         let numbers = [0, 1, 2];
         for (let i of numbers)
@@ -200,7 +196,17 @@ export class Kanas {
                 category: category
             });
         }
-        console.log('Kanas Tab Created');
+        // console.log('Kanas Tab Created');
+
+        if(category === 0)
+        {
+            if(kanaTab.length >=3)
+            {
+                kanaTab[0].hiraganaIsLearned = true;
+                kanaTab[1].hiraganaIsLearned = true;
+                kanaTab[2].hiraganaIsLearned = true;
+            }
+        }
 
         return kanaTab;
     }

@@ -4,8 +4,6 @@ import { Kanas } from '../../providers/kanas';
 import { PopoverMenuPage } from '../popover-menu/popover-menu';
 import { InfoPage } from '../info/info';
 
-import { Storage } from '@ionic/storage';
-
 
 @Component({
   selector: 'page-katakana',
@@ -24,7 +22,6 @@ export class KatakanaPage {
 
   constructor(public navCtrl: NavController,
               public popoverCtrl: PopoverController,
-              public storage: Storage,
               public kanas: Kanas)
   {
     // Temporary init (to be retreived from Storage)
@@ -35,14 +32,14 @@ export class KatakanaPage {
     this.fullTab = [];
   	this.fullTab = kanas.getFullTab();
 
-  	this.cols = this.range(0, ((this.fullTab[0].kanaTab).length - 1), 5);
-  	this.rows = this.range(0, 4, 1);
+  	this.cols = this.range(0, ((this.fullTab[0].kanaTab).length - 1), 5);//[0,5,10,15,20,25,30,35,40,45,50];
+  	this.rows = this.range(0, 4, 1);//[0,1,2,3,4];
 
-  	this.cols1 = this.range(0, (this.fullTab[1].kanaTab.length - 1), 5);
-  	this.rows1 = this.range(0, 4, 1);
+  	this.cols1 = this.range(0, (this.fullTab[1].kanaTab.length - 1), 5);//[0,5,10,15,20];
+  	this.rows1 = this.range(0, 4, 1);//[0,1,2,3,4];
 
-  	this.cols2 = this.range(0, (this.fullTab[2].kanaTab.length - 1), 3);
-  	this.rows2 = this.range(0, 2, 1);
+  	this.cols2 = this.range(0, (this.fullTab[2].kanaTab.length - 1), 3);//[0,3,6,9,12,15,18,21,24,27,30];
+  	this.rows2 = this.range(0, 2, 1);//[0,1,2];
 	}
 	
 	range(min, max, step) {
@@ -92,8 +89,8 @@ export class KatakanaPage {
     this.kanaCat[category].isExpanded = !(this.kanaCat[category].isExpanded); 
   }
 
-  ionViewDidLoad()
-  {
-    console.log('Hello katakana Page');
-  }
+  // ionViewDidLoad()
+  // {
+  //   console.log('Hello katakana Page');
+  // }
 }
