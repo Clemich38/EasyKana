@@ -1,7 +1,7 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "easy-kana",
+  "author": "Melc Studio",
+  "homepage": "",
   "private": true,
   "scripts": {
     "build": "ionic-app-scripts build",
@@ -49,5 +49,5 @@
       "locator": "ios"
     }
   ],
-  "description": "MyIonic2Project: An Ionic project"
+  "description": "Easy Kana: An easy kana learning app"
 }
