@@ -8,9 +8,6 @@ import { QuizPage } from '../pages/quiz/quiz';
 import { HiraganaPage } from '../pages/hiragana/hiragana';
 import { KatakanaPage } from '../pages/katakana/katakana';
 
-import { Kanas } from '../providers/kanas';
-import { Storage } from '@ionic/storage';
-
 
 @Component({
   templateUrl: 'app.html',
@@ -25,10 +22,9 @@ export class MyApp {
 
   constructor(
     public platform: Platform,
-    public menu: MenuController,
-    public storage: Storage,
-    public kanas: Kanas
-  ) {
+    public menu: MenuController
+  ) 
+  {
     this.initializeApp();
 
     // set our app's pages
