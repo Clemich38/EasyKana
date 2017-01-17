@@ -8,6 +8,7 @@ export class Kanas {
     fullTab: Array<{kanaTab: Array<{hiragana: string, katakana: string, romanji: string, hiraganaIsLearned: boolean, katakanaIsLearned: boolean, category: number}>}>;
     hiraganaCat: Array<{isExpanded: boolean}>;
     katakanaCat: Array<{isExpanded: boolean}>;
+    firstTime: boolean;
 
 
     constructor(public storage: Storage) 
@@ -28,6 +29,10 @@ export class Kanas {
         this.fullTab.push({kanaTab: this.kanaTab0});
         this.fullTab.push({kanaTab: this.kanaTab0});
         this.fullTab.push({kanaTab: this.kanaTab0});
+
+        // To display the info popup on the 1rst app openning
+        this.fetchFirstTime();
+
 
         let numbers = [0, 1, 2];
         for (let i of numbers)
@@ -244,6 +249,30 @@ export class Kanas {
                 this.storage.set('kana', newData);
         }
 
+    }
+
+    getFirstTime()
+    {
+        return this.firstTime;
+    }
+
+    fetchFirstTime()
+    {
+        this.storage.get('firstTime')
+        .then((firstTime) => 
+            {
+                if(firstTime === null)
+                    this.firstTime = true;
+                else
+                    this.firstTime = JSON.parse(firstTime); 
+            })
+    }
+
+    saveFirstTime()
+    {
+        this.firstTime = false;
+        let newData = JSON.stringify(this.firstTime);
+        this.storage.set('firstTime', newData);
     }
 
 }

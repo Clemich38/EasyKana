@@ -40,6 +40,12 @@ export class HiraganaPage {
 
   	this.cols2 = this.range(0, (this.fullTab[2].kanaTab.length - 1), 3);
   	this.rows2 = this.range(0, 2, 1);
+
+    if(kanas.getFirstTime())
+      {
+      this.onOpenInfos();
+      kanas.saveFirstTime();
+      }
 	}
 	
 	range(min, max, step) {

@@ -40,6 +40,13 @@ export class KatakanaPage {
 
   	this.cols2 = this.range(0, (this.fullTab[2].kanaTab.length - 1), 3);//[0,3,6,9,12,15,18,21,24,27,30];
   	this.rows2 = this.range(0, 2, 1);//[0,1,2];
+
+    if(kanas.getFirstTime())
+      {
+      this.onOpenInfos();
+      kanas.saveFirstTime();
+      }
+
 	}
 	
 	range(min, max, step) {
