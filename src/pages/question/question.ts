@@ -102,6 +102,10 @@ import { ResultPage } from '../result/result';
 
     // Scramble the array
     this.quizTab = this.shuffle(this.quizTab);
+
+    // Crop the array to the desired size
+    this.quizTab = this.quizTab.slice(0, 30);
+
   }
 
   buildResponseTab(size, golbalIndex)
@@ -146,7 +150,6 @@ import { ResultPage } from '../result/result';
 	  // While there remain elements to shuffle...
 	  while (0 !== currentIndex)
 	  {
-
 	    // Pick a remaining element...
 	    randomIndex = Math.floor(Math.random() * currentIndex);
 	    currentIndex -= 1;
@@ -159,6 +162,7 @@ import { ResultPage } from '../result/result';
 
 	  return array;
 	}
+
 
 	showResult(response)
 	{

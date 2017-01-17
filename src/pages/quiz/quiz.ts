@@ -13,10 +13,6 @@ import { Kanas } from '../../providers/kanas';
 })
 export class QuizPage {
 
-  // private admobId: any;
-  isCreated : boolean;
-  isDisplayed : boolean;
-
   constructor(public navCtrl: NavController,
               public platform: Platform,
               public adMobModule: AdMobModule,
