@@ -1,19 +1,24 @@
 .space {
-	margin-top   :20px;
-    margin-bottom:20px;
+	margin-top   :30px;
+    margin-bottom:30px;
 }
 
 .spacebis {
-	margin-top   :40px;
+	margin-top   :60px;
 }
 
-.back {
-    background: url(../assets/back.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+.bigbutton {
+    height: 150px;
+    align-content: center
 }
 
+.bigcardbutton {
+    font-weight: 500;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100%;
+    // box-shadow: none;
+}
 
 .bigtoolbar {
     height: 150px !important;
@@ -24,4 +29,18 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.cntr {
+    align-content: center;
+}
+
+.bigbigicon {
+    color: orange;
+    font-size: 30px;
+}
+
+.bigicon {
+    color: orange;
+    font-size: 20px;
 }

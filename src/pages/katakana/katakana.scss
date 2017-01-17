@@ -8,14 +8,14 @@ page-katakana {
     }
 
     .ion-card-active{
-        background-color: rgba( lightgreen, 0.8);
+        background-color: lightgreen;
         margin: 0 !important;
         width: 100%;
         box-shadow: none;
     };
 
     .ion-card-inactive{
-        background-color:rgba( lightgrey, 0.6);
+        background-color: $light-blue-grey-color;
         margin: 0 !important;
         width: 100%;
         box-shadow: none;

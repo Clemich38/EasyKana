@@ -1,33 +1,71 @@
 <ion-header>
 
-  <ion-navbar color="dark">
-    <button ion-button menuToggle>
+	<ion-navbar color="orange">
+		<button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title center>Quiz</ion-title>
-  </ion-navbar>
+		<ion-title center>Quiz</ion-title>
+	</ion-navbar>
 
 </ion-header>
 
 
-<ion-content class="back" padding>
+<ion-content padding>
 
-	<ion-grid>
-		<ion-row>
-			<ion-col width-10></ion-col>
-			<ion-col width-80>
-				<div style="text-align: center">
-					<button ion-button center block large outline color="dark" text-lowercase text-capitalize class="space" (click)="openSettings(0)">Hiragana Quiz</button>
-				</div>
-				<div style="text-align: center">
-					<button ion-button center block large outline color="dark" text-lowercase text-capitalize class="space" (click)="openSettings(1)">Katakana Quiz</button>
-				</div>
-				<div style="text-align: center">
-					<button ion-button center block large outline color="dark" text-lowercase text-capitalize class="spacebis" menuToggle>Learning</button>
-				</div>
-			</ion-col>
-			<ion-col width-10></ion-col>
-		</ion-row>
-	</ion-grid>
+			<ion-grid>
+
+				<ion-row>
+
+					<ion-col width-50 style="text-align:center">
+
+						<ion-card color="bluegrey2" class="bigcardbutton space" (click)="openSettings(0)">
+							<ion-label>
+								<font color="orange" size="7">あ</font>
+								<font color="orange" size="5">か</font>
+								<font color="orange" size="3">さ</font>
+							</ion-label>
+							<ion-label>
+								Hiragana Quiz
+							</ion-label>
+						</ion-card>
+					</ion-col>
+
+					<ion-col width-50 style="text-align:center">
+
+						<ion-card color="bluegrey2" class="bigcardbutton space" (click)="openSettings(1)">
+							<ion-label>
+								<font color="orange" size="7">ア</font>
+								<font color="orange" size="5">カ</font>
+								<font color="orange" size="3">サ</font>
+							</ion-label>
+							<ion-label>
+								Katakana Quiz
+							</ion-label>
+						</ion-card>
+
+					</ion-col>
+
+				</ion-row>
+
+				<ion-row>
+
+					<ion-col width-25></ion-col>
+					<ion-col width-50 style="text-align:center">
+
+						<ion-card color="bluegrey2" class="bigcardbutton space" menuToggle>
+							<ion-label>
+								<ion-icon class="bigbigicon" name="school"></ion-icon>
+							</ion-label>
+							<ion-label>
+								Learning
+							</ion-label>
+						</ion-card>
+					</ion-col>
+
+					<ion-col width-25></ion-col>
+				</ion-row>
+
+			</ion-grid>
+
 
 </ion-content>

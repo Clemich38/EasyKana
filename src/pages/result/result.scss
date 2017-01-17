@@ -3,15 +3,15 @@ page-result {
 }
 
 .itemtransparent {
-	border-color: rgba(0, 0, 0, 0);
-	background-color: rgba(white, 0.3);
+	border-color: $divider-color;
+	background-color: $light-blue-grey-color;
 	color: dark; 
 }
 
 .headertransparent {
-	border-color: rgba(0, 0, 0, 0);
-	background-color: rgba(white, 0.4);
+	border: none;
+	background-color: $primary-color-light;
 	color: dark; 
-	margin-top: 2px !important;
+	margin-top: 4px !important;
 	margin-bottom: 2px !important;
 }

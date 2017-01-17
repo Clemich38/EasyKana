@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar color="dark">
+  <ion-navbar color="orange">
     <ion-title>question</ion-title>
   </ion-navbar>
 
@@ -19,16 +19,16 @@
 		<ion-row>
 			<ion-col width-25></ion-col>
 			<ion-col *ngIf="quizTab.length > 0" width-50  style="text-align: center">
-		  	<div>
+		  	<div class="downspace">
 		        <font size="8">{{quizTab[iterator].kana}}</font>
 		    </div>
 				<div *ngIf="quizModeQCM == true">
 					<div *ngFor="let response of responseTab">
 						<span [ngSwitch]="response.hasBeenClicked">
-							<button ion-button block class="space" *ngSwitchCase="false" outline color="dark" (click)="showResult(response)" text-lowercase>
+							<button ion-button block class="littlespace" *ngSwitchCase="false" outline color="bluegrey" (click)="showResult(response)" text-lowercase>
 								{{response.romanji}}
 							</button>
-							<button ion-button block class="space" *ngSwitchCase="true" [color]="response.isGood ? 'secondary' : 'danger'" (click)="showResult(response)" text-lowercase>
+							<button ion-button block class="littlespace" *ngSwitchCase="true" [color]="response.isGood ? 'secondary' : 'danger'" (click)="showResult(response)" text-lowercase>
 								{{response.romanji}}
 							</button>
 						</span>
@@ -42,20 +42,20 @@
 									<ion-label floating>Romanji</ion-label>
 									<ion-input type="text" [(ngModel)]="answer" [ngModelOptions]="{standalone: true}"></ion-input>
 								</ion-item>
-								<button ion-button block class="space" color="dark" type="submit" [disabled]="!nextDisable" block text-lowercase text-capitalize>Check</button>
+								<button ion-button block class="space" color="bluegrey2" type="submit" [disabled]="!nextDisable" block text-lowercase text-capitalize>Check</button>
 							</form>
 							<form (ngSubmit)="showResult()" *ngSwitchCase="false" class="formspace">
 								<ion-item [ngClass]="quizTab[iterator].succes ? 'inputgreen' : 'inputred'">
 									<ion-label floating [ngClass]="quizTab[iterator].succes ? 'textgreen' : 'textred'">{{quizTab[iterator].succes ? "Well done!" : ("Oh no! It's: " + quizTab[iterator].romanji)}}</ion-label>
 									<ion-input type="text" [(ngModel)]="answer" [ngModelOptions]="{standalone: true}"></ion-input>
 								</ion-item>
-								<button ion-button block class="space" color="dark" type="submit" [disabled]="!nextDisable" block text-lowercase text-capitalize>Check</button>
+								<button ion-button block class="space" color="bluegrey2" type="submit" [disabled]="!nextDisable" block text-lowercase text-capitalize>Check</button>
 							</form>
 						</span>
 					</div>
 				</div>
 					<div>
-						<button ion-button block class="space" color="dark" [disabled]="nextDisable" (click)="nextQuestion()" text-lowercase text-capitalize>
+						<button ion-button block class="space" color="bluegrey2" [disabled]="nextDisable" (click)="nextQuestion()" text-lowercase text-capitalize>
 							{{nextStr}}
 						</button>
 					</div>

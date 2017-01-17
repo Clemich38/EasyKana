@@ -10,9 +10,21 @@
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
 
-$text-color:        #3d3d3d;
-$background-color:  lightgrey;
-$list-md-border-color:	rgba(black, 0.05);
+$primary-color-dark:   #F57C00;
+$primary-color:        #FF9800;
+$primary-color-light:  #FFE0B2;
+$primary-color-text:   #212121;
+$blue-grey-color:      #607D8B;
+$dark-blue-grey-color: #455A64;
+$semi-light-blue-grey-color: #CFD8DC;
+$light-blue-grey-color: #ebf5fa;
+$primary-text-color:   #212121;
+$secondary-text-color: #757575;
+$divider-color:        #BDBDBD;
+
+$text-color:        $primary-text-color;
+$background-color:  white;
+$list-md-border-color:	$semi-light-blue-grey-color;
 
 // Named Color Variables
 // --------------------------------------------------
@@ -27,8 +39,13 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #3d3d3d,
-  favorite:   #69BB7B
+  dark:       #212121,
+  favorite:   #69BB7B,
+  orange:     $primary-color,
+  bluegrey:   $dark-blue-grey-color,
+  bluegrey2:  $blue-grey-color,
+  bluegrey3:  $semi-light-blue-grey-color,
+
 );
 
 
